@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python)](https://python.org)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql)](https://mysql.com)
 
-![Dashboard Demo](assets/demo.gif.mp4) 
+![Dashboard Demo](assets/demo.gif) 
 
 **Never face database bottlenecks alone!** Bottleneck BFF combines ML magic ✨ and database expertise to:
 - 🔍 Predict performance issues before they crash your party
