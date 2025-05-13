@@ -1,0 +1,6 @@
+streamlit
+pandas
+mysql-connector-python
+sqlglot
+scikit-learn
+joblib
