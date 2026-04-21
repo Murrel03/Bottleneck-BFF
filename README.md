@@ -1,89 +1,64 @@
-# 💖 Bottleneck BFF - Your SQL Guardian Angel
+⚡ Bottleneck BFF — ML-Powered SQL Performance Optimization Dashboard
+A production-style database performance monitoring and SQL optimization dashboard built with Python and Streamlit. Designed to simulate real-world DBA tooling for detecting query bottlenecks and providing actionable optimization advice.
 
-[![Streamlit](https://img.shields.io/badge/Streamlit-%E2%9D%A4%EF%B8%8F-FF4B4B)](https://streamlit.io)
-[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python)](https://python.org)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql)](https://mysql.com)
+Features
 
-![Dashboard Demo](assets/demo.gif.gif)
+Live bottleneck prediction using a trained ML model (Random Forest classifier)
+Interactive sliders to simulate query scenarios and get instant predictions
+SQL analyzer — paste any query to receive:
 
-**Never face database bottlenecks alone!** Bottleneck BFF combines ML magic ✨ and database expertise to:
-- 🔍 Predict performance issues before they crash your party
-- ✨ Auto-optimize SQL queries like a DBA sidekick
-- 📊 Show real-time database vitals in style
+Structural issue detection (SELECT *, missing WHERE, cartesian JOINs, etc.)
+Query quality score (0–100) with per-check breakdown
+Optimized SQL rewrite
+Index creation suggestions based on WHERE clause columns
 
-## 🌟 Sparkling Features
-| Feature               | Magic Wand ✨                          |
-|-----------------------|----------------------------------------|
-| Live Monitoring       | Real-time MySQL health dashboard       |
-| Query Optimization    | Automatic SQL rewriting with SQLGlot   |
-| Index Advisor         | Smart index recommendations           |
-| Bottleneck Prediction | ML-powered performance forecasting     |
-| Cloud Ready           | One-click AWS deployment               |
 
-## 🚀 Quick Start
-### Prerequisites
-- Python 3.9+
-- MySQL Docker container
+Performance trend charts for query time, CPU usage, and lock contention
+Metrics dashboard showing dataset-level averages and bottleneck rate
 
-```bash
-# 1. Clone the repo
-git clone https://github.com/Murnel03/Bottleneck-BFF.git
+
+Tech Stack
+LayerTechnologyDashboardStreamlitML ModelScikit-learn (Random Forest)SQL ParsingsqlglotDataPandas, NumPyDatasetCustom simulated Oracle/MySQL metrics (database_metrics.csv)
+
+Project Structure
+bottleneck-bff/
+├── dashboard.py               # Main Streamlit app
+├── database_metrics.csv       # Simulated database metrics dataset
+├── bottleneck_predictor.pkl   # Trained ML model
+├── train_model.py             # Model training script
+├── requirements.txt           # Dependencies
+└── README.md
+
+Setup & Run
+bash# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/bottleneck-bff.git
+cd bottleneck-bff
 
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Start MySQL (Docker)
-docker run --name mysql_db -e MYSQL_ROOT_PASSWORD=yourpassword -p 3306:3306 -d mysql:latest
+# 3. Train the model (if .pkl not present)
+python train_model.py
 
-# 4. Launch the magic!
+# 4. Run the dashboard
 streamlit run dashboard.py
-🛠️ For Database Wizards
-Customize Your Setup
-Create sample data:
 
-python
-python data/generate_sample_data.py
-Configure your MySQL connection in .streamlit/secrets.toml:
+Model Details
+The ML model is a Random Forest Classifier trained on simulated database metrics:
+FeatureDescriptionquery_timeQuery execution time in secondscpu_usageCPU usage percentage at query timelocksNumber of active database locks
+Target variable: bottleneck (1 = bottleneck detected, 0 = normal)
+Training accuracy: ~85% on the simulated dataset.
 
-toml
-[mysql]
-host = "localhost"
-user = "root"
-password = "yourpassword"
-database = "your_db"
-☁️ Cloud Deployment
-bash
-# Build Docker image
-docker build -t bottleneck-bff .
+Dataset
+database_metrics.csv contains 500 simulated rows of database performance metrics, modeled after real Oracle 19c RAC production patterns observed in banking environments. Each row represents a single query execution event.
 
-# Run on AWS EC2
-docker run -p 8501:8501 --name bbff -d bottleneck-bff
-Full deployment guide
+SQL Analyzer — Checks Performed
+CheckWhat it catchesSELECT * usageUnnecessary data transferMissing WHEREFull table scansJOIN without ONCartesian productsOR in WHEREPotential index bypassLeading wildcard LIKENon-sargable predicatesNOT INNULL-unsafe patternsORDER BY without LIMITUnbounded sort operations
 
-🧠 Tech Wizardry
-ML Core: Scikit-learn, Joblib
+Background
+Built as a portfolio project to demonstrate practical data engineering and DBA skills. The patterns in the SQL analyzer and recommendations are based on real-world Oracle and MySQL performance tuning experience, including work on Oracle 19c RAC environments supporting mission-critical banking applications.
 
-Database Magic: SQLGlot, MySQL Connector
-
-UI Enchantment: Streamlit
-
-Cloud Sorcery: AWS EC2, Docker
-
-🤝 Join the Magic Circle
-Contributions welcome! Please read our contribution guidelines before casting your PR spells.
-
-Made with 💖 by Murrel Miranda
-Database whisperer & cloud conjurer
-
-
-Key elements I've included:
-1. **Visual Hierarchy**: Emojis and shields make it scannable
-2. **Feature Table**: Quick comparison of capabilities
-3. **Interactive Elements**: Collapsible sections for advanced users
-4. **Personality**: Magic/wizardry theme matching your dashboard's style
-5. **Clear Pathways**: Separate sections for different user types
-
-To complete this:
-1. Create `assets/` folder with a demo GIF (use [ScreenToGif](https://www.screentogif.com/))
-2. Add blank `CONTRIBUTING.md` (I can help with this too!)
-3. Verify all links match your repo structure
+Author
+Murrel Miranda
+Entry-Level Data Engineer | Oracle DBA
+LinkedIn · Portfolio
