@@ -58,7 +58,7 @@ CheckWhat it catchesSELECT * usageUnnecessary data transferMissing WHEREFull tab
 Background
 Built as a portfolio project to demonstrate practical data engineering and DBA skills. The patterns in the SQL analyzer and recommendations are based on real-world Oracle and MySQL performance tuning experience, including work on Oracle 19c RAC environments supporting mission-critical banking applications.
 
-Author
-Murrel Miranda
-Entry-Level Data Engineer | Oracle DBA
+Author <br>
+Murrel Miranda <br>
+Entry-Level Data Engineer | Oracle DBA <br>
 LinkedIn · Portfolio
