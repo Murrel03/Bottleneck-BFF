@@ -31,7 +31,7 @@ bottleneck-bff/
 
 Setup & Run
 bash# 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/bottleneck-bff.git
+git clone https://github.com/Murrel03/bottleneck-bff.git
 cd bottleneck-bff
 
 # 2. Install dependencies
